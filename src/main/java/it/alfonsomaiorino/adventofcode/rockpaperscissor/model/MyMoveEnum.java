@@ -4,18 +4,16 @@ import java.util.Arrays;
 
 public enum MyMoveEnum {
 
-    ROCK('X', 1L, 'A'),
-    PAPER('Y', 2L, 'B'),
-    SCISSORS('Z', 3L, 'C');
+    ROCK('X', 1L),
+    PAPER('Y', 2L),
+    SCISSORS('Z', 3L);
 
     private Character strategyCode;
     private Long pointsForMove;
-    private Character realMoveCode;
 
-    MyMoveEnum(Character strategyCode, Long pointsForMove, Character realMoveCode) {
+    MyMoveEnum(Character strategyCode, Long pointsForMove) {
         this.strategyCode = strategyCode;
         this.pointsForMove = pointsForMove;
-        this.realMoveCode = realMoveCode;
     }
 
     public Character getStrategyCode() {
@@ -29,13 +27,6 @@ public enum MyMoveEnum {
     public static MyMoveEnum getByStrategyCode(Character strategyCode) {
         return Arrays.stream(MyMoveEnum.values())
                 .filter(myMove -> strategyCode.equals(myMove.getStrategyCode()))
-                .findFirst()
-                .orElseThrow();
-    }
-
-    public static MyMoveEnum getByRealMoveCode(Character realMoveCode) {
-        return Arrays.stream(MyMoveEnum.values())
-                .filter(myMove -> realMoveCode.equals(myMove.getStrategyCode()))
                 .findFirst()
                 .orElseThrow();
     }
